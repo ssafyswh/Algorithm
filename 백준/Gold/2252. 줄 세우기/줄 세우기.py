@@ -1,0 +1,31 @@
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+N, M = map(int, input().split())
+taller_than = [0] * (N + 1)
+heights = [[] for _ in range(N + 1)]
+
+for _ in range(M):
+    a, b = map(int, input().split())
+    taller_than[b] += 1
+    heights[a].append(b)
+
+checked = [False] * (N + 1)
+q = deque([])
+for i in range(1, N + 1):
+    if taller_than[i] == 0:
+        q.append(i)
+        checked[i] = True
+
+result = []
+while q:
+    node = q.popleft()
+    for taller in heights[node]:
+        taller_than[taller] -= 1
+        if taller_than[taller] == 0:
+            q.append(taller)
+            checked[taller] = True
+    result.append(node)
+
+print(*result)

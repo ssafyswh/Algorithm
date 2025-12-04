@@ -5,17 +5,15 @@ N = int(input())
 A = [*(map(int, input().split()))]
 
 result = 0
-limit = 2 * 10 ** 5
-dp = [0] * (2 * limit + 1)
-
+sum_set = set()
 for i in range(1, N):
     for j in range(i - 1, -1, -1):
         temp_sum = A[i - 1] + A[j]
-        dp[temp_sum + limit] = 1
+        sum_set.add(temp_sum)
 
     for j in range(i - 1, -1, -1):
         temp_diff = A[i] - A[j]
-        if dp[temp_diff + limit] == 1:
+        if temp_diff in sum_set:
             result += 1
             break
 

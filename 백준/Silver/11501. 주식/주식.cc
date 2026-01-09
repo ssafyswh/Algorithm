@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stack>
 #include <string>
 #include <algorithm>
 
@@ -12,20 +11,15 @@ int main() {
         int N;
         long long result = 0;
         cin >> N;
-        stack<int> stock;
-        for (int i = 0; i < N; i ++) {
-            int price;
-            cin >> price;
-            stock.push(price);
+        int stock[N] = {0};
+        for (int i = 0; i < N; i++) {
+            cin >> stock[i];
         }
         int highest = 0;
-        for (int i = 0; i < N; i ++) {
-            if (highest < stock.top()) {
-                highest = stock.top();
-            } else {
-                result += highest - stock.top();
-            }
-            stock.pop();
+        for (int i = N - 1; i >= 0; i--) {
+            int price = stock[i];
+            if (highest < price) highest = price;
+            else result += highest - price;
         }
         cout << result << "\n";
     }

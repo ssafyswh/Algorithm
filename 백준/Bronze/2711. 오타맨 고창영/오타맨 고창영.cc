@@ -10,12 +10,8 @@ int main() {
         int ord;
         string text;
         cin >> ord >> text;
-        string result = "";
-        for (int i = 0; i < text.size(); i++) {
-            if (i == ord - 1) continue;
-            result += text[i];
-        }
-        cout << result << "\n";
+        text.erase(ord - 1, 1);
+        cout << text << "\n";
     }
     return 0;
 }

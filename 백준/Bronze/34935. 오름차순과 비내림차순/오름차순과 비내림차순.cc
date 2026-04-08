@@ -11,7 +11,10 @@ int main() {
     for (int i = 1; i < N; i++) {
         long long nxt;
         cin >> nxt;
-        if (num >= nxt) result = 0;
+        if (num >= nxt) {
+            result = 0;
+            break;
+        }
         num = nxt;
     }
     cout << result;

@@ -17,25 +17,18 @@ void solve(int step, int calc) {
         max_val = max(max_val, calc);
         return;
     }
-    if (oper[0]) {
-        oper[0]--;
-        solve(step + 1, calc + nums[step + 1]);
-        oper[0]++;
-    }
-    if (oper[1]) {
-        oper[1]--;
-        solve(step + 1, calc - nums[step + 1]);
-        oper[1]++;
-    }
-    if (oper[2]) {
-        oper[2]--;
-        solve(step + 1, calc * nums[step + 1]);
-        oper[2]++;
-    }
-    if (oper[3]) {
-        oper[3]--;
-        solve(step + 1, calc / nums[step + 1]);
-        oper[3]++;
+    for (int i = 0; i < 4; i++) {
+        if (oper[i]) {
+            int nxt_num = nums[step + 1];
+            int nxt_calc;
+            if (i == 0) nxt_calc = calc + nxt_num;
+            else if (i == 1) nxt_calc = calc - nxt_num;
+            else if (i == 2) nxt_calc = calc * nxt_num;
+            else if (i == 3) nxt_calc = calc / nxt_num;
+            oper[i]--;
+            solve(step + 1, nxt_calc);
+            oper[i]++;
+        }
     }
 }
 

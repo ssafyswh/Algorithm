@@ -7,8 +7,11 @@
 using namespace std;
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
     int N;
-   cin >> N;
+    cin >> N;
 
     vector<pair<int, string>> words(N);
     for (int i = 0; i < N; i++) {

@@ -1,0 +1,13 @@
+def n_and_m(l=[], n=0):
+    if n == M:
+        print(' '.join(list(map(str, l))))
+        return
+    for i in range(N):
+        l.append(nums[i])
+        n_and_m(l, n + 1)
+        l.pop()
+
+
+N, M = map(int, input().split())
+nums = sorted(list(map(int, input().split())))
+n_and_m()
